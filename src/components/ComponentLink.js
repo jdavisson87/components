@@ -2,23 +2,28 @@ import React from "react";
 import styled from "@emotion/styled";
 
 export default function ComponentLink(props) {
-  const { name, img } = props.info;
+  const { name, img, title } = props.info;
   return (
     <Card>
-      <ComponentImg src={img} />
-      <p>{name}</p>
+      <ImgCtr>
+        <ComponentImg src={require(`./${name}/${img}`)} />
+      </ImgCtr>
+      <Title>{title}</Title>
     </Card>
   );
 }
 
 const Card = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   text-align: center;
   width: 250px;
+  height: 275px;
   border-radius: 10px;
+  border: 1px solid #ccc;
   margin: 10px;
   -o-transition: 0.7s;
   -ms-transition: 0.7s;
@@ -32,8 +37,25 @@ const Card = styled.div`
   }
 `;
 
+const ImgCtr = styled.div`
+  display: flex;
+  height: 200px;
+  justify-content: center;
+`;
+
 const ComponentImg = styled.img`
+  position: absolute;
+  top: 20px;
   width: 200px;
   align-self: center;
   margin-top: 10px;
+`;
+
+const Title = styled.p`
+  position: absolute;
+  font-size: 18px;
+  font-weight: bolder;
+  bottom: 0px;
+  text-align: center;
+  width: 100%;
 `;

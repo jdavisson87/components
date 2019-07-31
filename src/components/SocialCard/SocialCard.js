@@ -51,19 +51,21 @@ export default function SocialCard() {
       {transition.map(({ item, key, props }) =>
         item ? (
           <animated.div key={key} style={props}>
-            <CardCtr onClick={() => setFlipped(!isFlipped)}>
+            <CardCtr>
               <SocialMediaCtr>
                 <SocialMedia>LinkedIn Website:</SocialMedia>
                 <SocialMediaLink href={linkedIn}>{linkedIn}</SocialMediaLink>
                 <SocialMedia>GitHub Website:</SocialMedia>
                 <SocialMediaLink href={github}>{github}</SocialMediaLink>
               </SocialMediaCtr>
-              <Footer>Click for Personal Network information</Footer>
+              <Footer onClick={() => setFlipped(!isFlipped)}>
+                Click for Personal Network information
+              </Footer>
             </CardCtr>
           </animated.div>
         ) : (
           <animated.div key={key} style={props}>
-            <CardCtr onClick={() => setFlipped(!isFlipped)}>
+            <CardCtr>
               <SocialCardHeader>
                 <Name>{name}</Name>
               </SocialCardHeader>
@@ -75,7 +77,9 @@ export default function SocialCard() {
                   <Email href={`mailto:${email}`}>{email}</Email>
                 </PersonalInfo>
               </InfoCtr>
-              <Footer>Click for Social Network information</Footer>
+              <Footer onClick={() => setFlipped(!isFlipped)}>
+                Click here for Social Network information
+              </Footer>
             </CardCtr>
           </animated.div>
         )
@@ -112,7 +116,6 @@ const CardCtr = styled.div`
   transition: all 0.7s linear;
   margin-top: 70px;
   :hover {
-    cursor: pointer;
     background: rgb(214, 230, 255);
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     -moz-box-shadow: 3px 3px 5px 6px #ccc;
@@ -171,9 +174,13 @@ const Email = styled.a`
 const Footer = styled.p`
   width: 100%;
   margin: 0;
+  font-weight: bolder;
   position: absolute;
   bottom: 5px;
   text-align: center;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const SocialMedia = styled.p`
