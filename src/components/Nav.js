@@ -26,10 +26,10 @@ const NavBar = styled.div`
 `;
 
 const LinkCtr = styled.div`
-  -o-transition: 0.7s;
-  -ms-transition: 0.7s;
-  -moz-transition: 0.7s;
-  -webkit-transition: 0.7s;
+  -o-transition: 1s;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
   border-radius: 5px;
   margin: 3px;
   & > a {
@@ -40,7 +40,7 @@ const LinkCtr = styled.div`
     }
   }
   :hover {
-    background: grey;
+    background: black;
     cursor: pointer;
   }
 `;

@@ -1,0 +1,25 @@
+{
+  "SocialCard": {
+    "link": {
+      "name": "SocialCard",
+      "title": "Social Card",
+      "img": "https://media.licdn.com/dms/image/C4E03AQGZnGgEFtYLgg/profile-displayphoto-shrink_200_200/0?e=1570060800&v=beta&t=RESbdnxFxjizVO0o8FMEZcA5R6ygp-RtISQPzCsBVSA"
+    },
+    "name": "Jeffrey Davisson",
+    "title": "Social Card",
+    "email": "jdavisson87@gmail.com",
+    "phone": "123-456-7890",
+    "linkedIn": "https://www.linkedin.com/in/jeff-davisson/",
+    "position": "React Developer",
+    "github": "https://github.com/jdavisson87",
+    "img": "https://media.licdn.com/dms/image/C4E03AQGZnGgEFtYLgg/profile-displayphoto-shrink_200_200/0?e=1570060800&v=beta&t=RESbdnxFxjizVO0o8FMEZcA5R6ygp-RtISQPzCsBVSA"
+  },
+  "CreditCard": {
+    "link": {
+      "name": "CreditCard",
+      "title": "Credit Card",
+      "img": "https://media.licdn.com/dms/image/C4E03AQGZnGgEFtYLgg/profile-displayphoto-shrink_200_200/0?e=1570060800&v=beta&t=RESbdnxFxjizVO0o8FMEZcA5R6ygp-RtISQPzCsBVSA"
+    },
+    "name": "Credit Card"
+  }
+}
