@@ -14,12 +14,15 @@
     "github": "https://github.com/jdavisson87",
     "img": "https://media.licdn.com/dms/image/C4E03AQGZnGgEFtYLgg/profile-displayphoto-shrink_200_200/0?e=1570060800&v=beta&t=RESbdnxFxjizVO0o8FMEZcA5R6ygp-RtISQPzCsBVSA"
   },
-  "CreditCard": {
+  "CustomizedTabs": {
     "link": {
-      "name": "CreditCard",
-      "title": "Credit Card",
-      "img": "CreditCard.jpg"
+      "name": "CustomizedTabs",
+      "title": "Customized Tabs",
+      "img": "CustomizedTabs.jpg"
     },
-    "name": "Credit Card"
+    "title": "Customized Tabs",
+    "tab1": "Tab 1",
+    "tab2": "Tab 2",
+    "tab3": "Tab 3"
   }
 }

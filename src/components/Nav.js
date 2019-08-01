@@ -21,8 +21,8 @@ export default function Nav() {
 
 const NavBar = styled.div`
   display: flex;
-  justify-content: center;
-  margin-top: 15px;
+  justify-content: left;
+  padding: 5px;
 `;
 
 const LinkCtr = styled.div`

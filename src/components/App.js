@@ -4,20 +4,28 @@ import Nav from "./Nav";
 import Home from "./Home";
 import Components from "./Components";
 import SocialCard from "./SocialCard/SocialCard";
+import CustomizedTabs from "./CustomizedTabs/CustomizedTabs";
 import Data from "../utils/_Data.json";
 
 function App() {
-  const [linkInfo, setLinkInfo] = useState([]);
+  const [AppData, setAppData] = useState([]);
+  const [Loading, setLoading] = useState(true);
 
-  const fetchLinkInfo = async () => {
-    setLinkInfo(Object.keys(Data).map(data => Data[data].link));
+  const fetchAppData = async () => {
+    setAppData(Data);
   };
 
   useEffect(() => {
-    fetchLinkInfo();
+    fetchAppData();
+    setLoading(false);
   }, []);
 
-  return (
+  const linkInfo = Object.keys(AppData).map(data => AppData[data].link);
+  const tabInfo = AppData.CustomizedTabs;
+
+  return Loading ? (
+    <p>Loading</p>
+  ) : (
     <Router>
       <div className="App">
         <Nav />
@@ -29,6 +37,10 @@ function App() {
             render={props => <Components {...props} LinkInfo={linkInfo} />}
           />
           <Route path="/components/SocialCard" component={SocialCard} />
+          <Route
+            path="/components/CustomizedTabs"
+            render={props => <CustomizedTabs {...props} TabInfo={tabInfo} />}
+          />
         </Switch>
       </div>
     </Router>
