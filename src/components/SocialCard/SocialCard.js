@@ -52,6 +52,9 @@ export default function SocialCard() {
         item ? (
           <animated.div key={key} style={props}>
             <CardCtr>
+              <SocialCardHeader>
+                <Name>Social Network Links</Name>
+              </SocialCardHeader>
               <SocialMediaCtr>
                 <SocialMedia>LinkedIn Website:</SocialMedia>
                 <SocialMediaLink href={linkedIn}>{linkedIn}</SocialMediaLink>
@@ -59,7 +62,7 @@ export default function SocialCard() {
                 <SocialMediaLink href={github}>{github}</SocialMediaLink>
               </SocialMediaCtr>
               <Footer onClick={() => setFlipped(!isFlipped)}>
-                Click for Personal Network information
+                Click for Personal information
               </Footer>
             </CardCtr>
           </animated.div>
