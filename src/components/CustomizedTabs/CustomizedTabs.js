@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 export default function CustomizedTabs(props) {
-  const { title, tabs } = props.TabInfo;
+  const { tabs } = props.TabInfo;
+  const [activeTab, isActiveTab] = useState(null);
   return (
     <CustomizedTabCtr>
-      <h1>{title}</h1>
+      <h1>Customized Tabs</h1>
       <TabCtr>
-        {Object.keys(tabs).map(tab => {
-          const { name } = tabs[tab];
-          return (
-            <Tab key={name}>
-              <TabTitle>{name}</TabTitle>
-              <BottomBorder />
-            </Tab>
-          );
-        })}
+        <Tabs>
+          {Object.keys(tabs).map(tab => {
+            const { name, title } = tabs[tab];
+            return (
+              <Tab key={name} onClick={() => isActiveTab(title)}>
+                <TabTitle>{name}</TabTitle>
+                <BottomBorder />
+              </Tab>
+            );
+          })}
+        </Tabs>
+        <ContentCtr>
+          {activeTab === null ? (
+            <p>No tab selected</p>
+          ) : (
+            <p>{tabs[activeTab].content}</p>
+          )}
+        </ContentCtr>
       </TabCtr>
     </CustomizedTabCtr>
   );
@@ -30,13 +40,18 @@ const CustomizedTabCtr = styled.div`
 
 const TabCtr = styled.div`
   display:flex;
+  flex-direction: column;
 }
+`;
+
+const Tabs = styled.div`
+  display: flex;
 `;
 
 const BottomBorder = styled.div`
   height: 2px;
   background: lightgrey;
-  transition: all 0.7s linear;
+  transition: all 0.5s linear;
 
   }
 `;
@@ -67,4 +82,8 @@ const Tab = styled.button`
       background: blue;
     }
   }
+`;
+
+const ContentCtr = styled.div`
+  width: 100%;
 `;

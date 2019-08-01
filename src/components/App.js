@@ -22,7 +22,6 @@ function App() {
 
   const linkInfo = Object.keys(AppData).map(data => AppData[data].link);
   const tabInfo = AppData.CustomizedTabs;
-
   return Loading ? (
     <p>Loading</p>
   ) : (

@@ -20,17 +20,19 @@
       "title": "Customized Tabs",
       "img": "CustomizedTabs.jpg"
     },
-    "title": "Customized Tabs",
     "tabs": {
       "tab1": {
+        "title": "tab1",
         "name": "Tab 1",
         "content": "This is Tab 1 content"
       },
       "tab2": {
+        "title": "tab2",
         "name": "Tab 2",
-        "content": "This is Tab 2 content"
+        "content": "This is Tab 2  content"
       },
       "tab3": {
+        "title": "tab3",
         "name": "Tab 3",
         "content": "This is Tab 3 content"
       }
