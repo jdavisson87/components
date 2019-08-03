@@ -20,6 +20,15 @@
       "title": "Recipe Card",
       "img": "RecipeCard.jpg"
     },
+    "name": "Peachy Pancakes",
+    "id": "peachypancake01",
+    "image": "https://tastykitchen.com/recipes/wp-content/uploads/sites/2/2017/07/DSC_1229-420x280.jpg",
+    "posted": "July 10, 2017",
+    "favorite": true,
+    "prep": "10 minutes",
+    "cook": "15 minutes",
+    "difficulty": "Easy",
+    "servings": 4,
     "ingredients": [
       "2 cups Whole-grain Pancake Mix",
       "2 whole eggs",

@@ -24,6 +24,8 @@ function App() {
 
   const linkInfo = Object.keys(AppData).map(data => AppData[data].link);
   const tabInfo = AppData.CustomizedTabs;
+  const recipeInfo = AppData.RecipeCard;
+
   return Loading ? (
     <p>Loading</p>
   ) : (
@@ -44,7 +46,7 @@ function App() {
           />
           <Route
             path="/components/RecipeCard"
-            render={props => <RecipeCard {...props} />}
+            render={props => <RecipeCard {...props} RecipeInfo={recipeInfo} />}
           />
         </Switch>
       </AppCtr>

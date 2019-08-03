@@ -22,7 +22,9 @@ export default function Nav() {
 const NavBar = styled.div`
   display: flex;
   justify-content: left;
-  padding: 5px;
+  width: 100%;
+  padding: 15px;
+  margin-left: 50px;
 `;
 
 const LinkCtr = styled.div`
@@ -31,7 +33,7 @@ const LinkCtr = styled.div`
   -moz-transition: 1s;
   -webkit-transition: 1s;
   border-radius: 5px;
-  margin: 3px;
+  margin: 7px;
   & > a {
     text-decoration: none;
     color: black;
