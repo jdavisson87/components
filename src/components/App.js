@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import styled from "@emotion/styled";
 import Nav from "./Nav";
 import Home from "./Home";
 import Components from "./Components";
 import SocialCard from "./SocialCard/SocialCard";
 import CustomizedTabs from "./CustomizedTabs/CustomizedTabs";
+import RecipeCard from "./RecipeCard/RecipeCard";
 import Data from "../utils/_Data.json";
 
 function App() {
@@ -26,7 +28,7 @@ function App() {
     <p>Loading</p>
   ) : (
     <Router>
-      <div className="App">
+      <AppCtr>
         <Nav />
         <Switch>
           <Route path="/" exact component={Home} />
@@ -40,10 +42,21 @@ function App() {
             path="/components/CustomizedTabs"
             render={props => <CustomizedTabs {...props} TabInfo={tabInfo} />}
           />
+          <Route
+            path="/components/RecipeCard"
+            render={props => <RecipeCard {...props} />}
+          />
         </Switch>
-      </div>
+      </AppCtr>
     </Router>
   );
 }
 
 export default App;
+
+const AppCtr = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+`;

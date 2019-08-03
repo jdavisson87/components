@@ -14,6 +14,29 @@
     "github": "https://github.com/jdavisson87",
     "img": "https://media.licdn.com/dms/image/C4E03AQGZnGgEFtYLgg/profile-displayphoto-shrink_200_200/0?e=1570060800&v=beta&t=RESbdnxFxjizVO0o8FMEZcA5R6ygp-RtISQPzCsBVSA"
   },
+  "RecipeCard": {
+    "link": {
+      "name": "RecipeCard",
+      "title": "Recipe Card",
+      "img": "RecipeCard.jpg"
+    },
+    "ingredients": [
+      "2 cups Whole-grain Pancake Mix",
+      "2 whole eggs",
+      "2 Tbsp Vegetable Oil",
+      "2 Tbsp Sugar",
+      "1 Tbsp Vanilla Extract",
+      "2 Tbsp Peach Preserves",
+      "2 whole Peaches",
+      "Butter",
+      "Pancake Syrup"
+    ],
+    "steps": [
+      "Mix together the pancake mix, eggs, vegetable oil, sugar, and vanilla with 2 cups water. Stir in the peach preserves.",
+      "Pit and slice the peaches, then dice half of them. Stir in the diced peaches, reserving the slices for serving.",
+      "Heat a skillet over medium low heat and fry in butter until done on both sides. Serve with a little peach preserves, butter, and syrup."
+    ]
+  },
   "CustomizedTabs": {
     "link": {
       "name": "CustomizedTabs",

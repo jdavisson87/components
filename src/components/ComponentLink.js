@@ -29,6 +29,7 @@ const Card = styled.div`
   -ms-transition: 0.7s;
   -moz-transition: 0.7s;
   -webkit-transition: 0.7s;
+  box-shadow: 2px 4px #ccc;
   :hover {
     background: rgb(214, 230, 255);
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
@@ -40,15 +41,20 @@ const Card = styled.div`
 const ImgCtr = styled.div`
   display: flex;
   height: 200px;
+  max-height: 200px;
   justify-content: center;
 `;
 
 const ComponentImg = styled.img`
   position: absolute;
   top: 20px;
-  width: 200px;
   align-self: center;
   margin-top: 10px;
+  border-radius: 5px;
+  max-height: 200px;
+  max-width: 200px;
+  width: auto;
+  height: auto;
 `;
 
 const Title = styled.p`
