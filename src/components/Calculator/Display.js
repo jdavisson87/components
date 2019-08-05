@@ -30,7 +30,7 @@ let Display = ({ output }) => (
 );
 
 Display.propTypes = {
-  output: PropTypes.string
+  output: PropTypes.string.isRequired
 };
 
 export default Display;

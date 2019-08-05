@@ -18,7 +18,11 @@
     "build": "react-scripts build",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\" ",
     "eject": "react-scripts eject",
-    "lint": "eslint \"src/**/*.{js,jsx}\""
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "test": "jest --silent",
+    "test:update": "jest -u",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "eslintConfig": {
     "extends": "react-app"

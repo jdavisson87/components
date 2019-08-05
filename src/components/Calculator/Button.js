@@ -24,8 +24,8 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  value: PropTypes.string,
-  handleClick: PropTypes.func
+  value: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired
 };
 
 export default Button;

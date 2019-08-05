@@ -28,7 +28,7 @@ const ClearButton = props => (
 );
 
 ClearButton.propTypes = {
-  clear: PropTypes.func
+  clear: PropTypes.func.isRequired
 };
 
 export default ClearButton;
