@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
 const ButtonCtr = styled.button`
   height: 64px;
@@ -14,10 +15,17 @@ const Value = styled.p`
   font-size: 22px;
 `;
 
-const Button = props => (
-  <ButtonCtr onClick={() => props.handleClick(props.value)}>
-    <Value>{props.value}</Value>
-  </ButtonCtr>
-);
+const Button = props => {
+  return (
+    <ButtonCtr onClick={() => props.handleClick(props.value)}>
+      <Value>{props.value}</Value>
+    </ButtonCtr>
+  );
+};
+
+Button.propTypes = {
+  value: PropTypes.string,
+  handleClick: PropTypes.func
+};
 
 export default Button;

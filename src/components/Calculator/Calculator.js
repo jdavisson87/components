@@ -5,14 +5,6 @@ import Display from "./Display";
 import ClearButton from "./ClearButton";
 import * as math from "mathjs";
 
-const AppCtr = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-`;
-
 const CalculatorCtr = styled.div`
   width: 400px;
   height: 600px;
@@ -53,6 +45,7 @@ const Calculator = () => {
       }
     } else {
       setAnswer(answer + val);
+      setEvaluated(false);
     }
   };
 
@@ -80,38 +73,36 @@ const Calculator = () => {
   };
 
   return (
-    <AppCtr>
-      <CalculatorCtr>
-        <Display output={answer} />
-        <Row>
-          <Button handleClick={handleButtonPress} value={"1"} />
-          <Button handleClick={handleButtonPress} value={"2"} />
-          <Button handleClick={handleButtonPress} value={"3"} />
-          <Button handleClick={handleOperatorPress} value={"*"} />
-        </Row>
-        <Row>
-          <Button handleClick={handleButtonPress} value={"4"} />
-          <Button handleClick={handleButtonPress} value={"5"} />
-          <Button handleClick={handleButtonPress} value={"6"} />
-          <Button handleClick={handleOperatorPress} value={"/"} />
-        </Row>
-        <Row>
-          <Button handleClick={handleButtonPress} value={"7"} />
-          <Button handleClick={handleButtonPress} value={"8"} />
-          <Button handleClick={handleButtonPress} value={"9"} />
-          <Button handleClick={handleOperatorPress} value={"+"} />
-        </Row>
-        <Row>
-          <Button handleClick={handleDecimalPress} value={"."} />
-          <Button handleClick={handleButtonPress} value={"0"} />
-          <Button handleClick={handleEqual} value={"="} />
-          <Button handleClick={handleOperatorPress} value={"-"} />
-        </Row>
-        <Row>
-          <ClearButton clear={handleClear} />
-        </Row>
-      </CalculatorCtr>
-    </AppCtr>
+    <CalculatorCtr>
+      <Display output={answer} />
+      <Row>
+        <Button handleClick={handleButtonPress} value={"1"} />
+        <Button handleClick={handleButtonPress} value={"2"} />
+        <Button handleClick={handleButtonPress} value={"3"} />
+        <Button handleClick={handleOperatorPress} value={"*"} />
+      </Row>
+      <Row>
+        <Button handleClick={handleButtonPress} value={"4"} />
+        <Button handleClick={handleButtonPress} value={"5"} />
+        <Button handleClick={handleButtonPress} value={"6"} />
+        <Button handleClick={handleOperatorPress} value={"/"} />
+      </Row>
+      <Row>
+        <Button handleClick={handleButtonPress} value={"7"} />
+        <Button handleClick={handleButtonPress} value={"8"} />
+        <Button handleClick={handleButtonPress} value={"9"} />
+        <Button handleClick={handleOperatorPress} value={"+"} />
+      </Row>
+      <Row>
+        <Button handleClick={handleDecimalPress} value={"."} />
+        <Button handleClick={handleButtonPress} value={"0"} />
+        <Button handleClick={handleEqual} value={"="} />
+        <Button handleClick={handleOperatorPress} value={"-"} />
+      </Row>
+      <Row>
+        <ClearButton clear={handleClear} />
+      </Row>
+    </CalculatorCtr>
   );
 };
 

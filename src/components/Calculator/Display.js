@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
 const DisplayCtr = styled.div`
   height: 4em;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   font-weight: bold;
@@ -26,5 +28,9 @@ let Display = ({ output }) => (
     <DisplayOutput data-testid="number-display">{output}</DisplayOutput>
   </DisplayCtr>
 );
+
+Display.propTypes = {
+  output: PropTypes.string
+};
 
 export default Display;
