@@ -2,6 +2,18 @@ import React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
+const Display = ({ output }) => (
+  <DisplayCtr>
+    <DisplayOutput data-testid="number-display">{output}</DisplayOutput>
+  </DisplayCtr>
+);
+
+Display.propTypes = {
+  output: PropTypes.string.isRequired
+};
+
+export default Display;
+
 const DisplayCtr = styled.div`
   height: 4em;
   display: flex;
@@ -22,15 +34,3 @@ const DisplayOutput = styled.p`
   color: rgb(110, 255, 26);
   font-weight: lighter;
 `;
-
-let Display = ({ output }) => (
-  <DisplayCtr>
-    <DisplayOutput data-testid="number-display">{output}</DisplayOutput>
-  </DisplayCtr>
-);
-
-Display.propTypes = {
-  output: PropTypes.string.isRequired
-};
-
-export default Display;

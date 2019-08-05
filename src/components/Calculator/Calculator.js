@@ -4,18 +4,7 @@ import Button from "./Button";
 import Display from "./Display";
 import ClearButton from "./ClearButton";
 import * as math from "mathjs";
-
-const CalculatorCtr = styled.div`
-  width: 400px;
-  height: 600px;
-  font-family: sans-serif;
-`;
-
-const Row = styled.div`
-  display: flex;
-  width: 100%;
-  height: 4em;
-`;
+import { decimalPress, operatorPress } from "./utils/helper";
 
 const Calculator = () => {
   const [evaluated, setEvaluated] = useState(false);
@@ -32,16 +21,7 @@ const Calculator = () => {
   const handleOperatorPress = val => {
     if (evaluated === false) {
       if (answer !== "") {
-        const operatorCheck = answer.split("").pop();
-        const regex = /[+-/*]/;
-        const newAnswer = answer.split("");
-        newAnswer.splice(-1, 1);
-
-        regex.test(operatorCheck)
-          ? setAnswer(newAnswer.join("") + val)
-          : setAnswer(answer + val);
-      } else {
-        setAnswer("");
+        setAnswer(operatorPress(answer, val));
       }
     } else {
       setAnswer(answer + val);
@@ -50,10 +30,7 @@ const Calculator = () => {
   };
 
   const handleDecimalPress = val => {
-    const regex = /[+\-/*]/;
-    const regexDec = /[.]/;
-    const decimal = answer.split(regex)[answer.split(regex).length - 1];
-    regexDec.test(decimal) ? setAnswer(answer) : setAnswer(answer + val);
+    decimalPress ? setAnswer(answer) : setAnswer(answer + val);
   };
 
   const handleEqual = () => {
@@ -71,7 +48,6 @@ const Calculator = () => {
     setAnswer("");
     setEvaluated(false);
   };
-
   return (
     <CalculatorCtr>
       <Display output={answer} />
@@ -107,3 +83,15 @@ const Calculator = () => {
 };
 
 export default Calculator;
+
+const CalculatorCtr = styled.div`
+  width: 400px;
+  height: 600px;
+  font-family: sans-serif;
+`;
+
+const Row = styled.div`
+  display: flex;
+  width: 100%;
+  height: 4em;
+`;

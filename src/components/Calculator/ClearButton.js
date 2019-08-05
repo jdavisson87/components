@@ -2,6 +2,18 @@ import React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
+const ClearButton = ({ clear }) => (
+  <ClearBtnCtr data-testid="clear" onClick={clear}>
+    <ClearBtnText>Clear</ClearBtnText>
+  </ClearBtnCtr>
+);
+
+ClearButton.propTypes = {
+  clear: PropTypes.func.isRequired
+};
+
+export default ClearButton;
+
 const ClearBtnCtr = styled.button`
   height: 4em;
   display: flex;
@@ -20,15 +32,3 @@ const ClearBtnText = styled.p`
   font-size: 42px;
   font-weight: bold;
 `;
-
-const ClearButton = props => (
-  <ClearBtnCtr onClick={props.clear}>
-    <ClearBtnText>Clear</ClearBtnText>
-  </ClearBtnCtr>
-);
-
-ClearButton.propTypes = {
-  clear: PropTypes.func.isRequired
-};
-
-export default ClearButton;

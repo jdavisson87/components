@@ -6,5 +6,5 @@ afterEach(cleanup);
 
 test("<Display />", () => {
   const { getByText } = render(<Display output={"0"} />);
-  expect(getByText("0")).toBeTruthy();
+  expect(getByText("0").textContent).toBe("0");
 });

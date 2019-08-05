@@ -2,6 +2,21 @@ import React from "react";
 import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
+const Button = ({ value, handleClick }) => {
+  return (
+    <ButtonCtr data-testid="button" onClick={() => handleClick(value)}>
+      <Value>{value}</Value>
+    </ButtonCtr>
+  );
+};
+
+Button.propTypes = {
+  value: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired
+};
+
+export default Button;
+
 const ButtonCtr = styled.button`
   height: 64px;
   display: flex;
@@ -14,18 +29,3 @@ const ButtonCtr = styled.button`
 const Value = styled.p`
   font-size: 22px;
 `;
-
-const Button = props => {
-  return (
-    <ButtonCtr onClick={() => props.handleClick(props.value)}>
-      <Value>{props.value}</Value>
-    </ButtonCtr>
-  );
-};
-
-Button.propTypes = {
-  value: PropTypes.string.isRequired,
-  handleClick: PropTypes.func.isRequired
-};
-
-export default Button;

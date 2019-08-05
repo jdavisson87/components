@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from "react";
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 import Button from "../Button";
 
 afterEach(() => {
@@ -23,4 +23,7 @@ test("<Button /> with props", () => {
   );
   expect(console.error).not.toHaveBeenCalled();
   expect(getByText("0").textContent).toBe("0");
+
+  fireEvent.click(getByText("0"));
+  expect(handleClick).toHaveBeenCalledTimes(1);
 });
