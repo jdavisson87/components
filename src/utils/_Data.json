@@ -69,5 +69,12 @@
         "content": "This is Tab 3 content"
       }
     }
+  },
+  "Calculator": {
+    "link": {
+      "name": "Calculator",
+      "title": "Calculator",
+      "img": "Calculator.jpg"
+    }
   }
 }

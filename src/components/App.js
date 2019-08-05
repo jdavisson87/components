@@ -7,6 +7,7 @@ import Components from "./Components";
 import SocialCard from "./SocialCard/SocialCard";
 import CustomizedTabs from "./CustomizedTabs/CustomizedTabs";
 import RecipeCard from "./RecipeCard/RecipeCard";
+import Calculator from "./Calculator/Calculator";
 import Data from "../utils/_Data.json";
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
             path="/components/RecipeCard"
             render={props => <RecipeCard {...props} RecipeInfo={recipeInfo} />}
           />
+          <Route path="/components/Calculator" component={Calculator} />
         </Switch>
       </AppCtr>
     </Router>
