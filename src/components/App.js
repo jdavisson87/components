@@ -8,6 +8,7 @@ import SocialCard from "./SocialCard/SocialCard";
 import CustomizedTabs from "./CustomizedTabs/CustomizedTabs";
 import RecipeCard from "./RecipeCard/RecipeCard";
 import Calculator from "./Calculator/Calculator";
+import ListFilter from "./ListFilter/ListFilter";
 import Data from "../utils/_Data.json";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
   }, []);
 
   const linkInfo = Object.keys(AppData).map(data => AppData[data].link);
+  const socialInfo = AppData.SocialCard;
   const tabInfo = AppData.CustomizedTabs;
   const recipeInfo = AppData.RecipeCard;
 
@@ -40,7 +42,10 @@ function App() {
             exact
             render={props => <Components {...props} LinkInfo={linkInfo} />}
           />
-          <Route path="/components/SocialCard" component={SocialCard} />
+          <Route
+            path="/components/SocialCard"
+            render={props => <SocialCard {...props} SocialInfo={socialInfo} />}
+          />
           <Route
             path="/components/CustomizedTabs"
             render={props => <CustomizedTabs {...props} TabInfo={tabInfo} />}
@@ -50,6 +55,7 @@ function App() {
             render={props => <RecipeCard {...props} RecipeInfo={recipeInfo} />}
           />
           <Route path="/components/Calculator" component={Calculator} />
+          <Route path="/components/ListFilter" component={ListFilter} />
         </Switch>
       </AppCtr>
     </Router>

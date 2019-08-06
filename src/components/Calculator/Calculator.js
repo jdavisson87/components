@@ -11,36 +11,44 @@ const Calculator = () => {
   const [answer, setAnswer] = useState("");
 
   const handleButtonPress = val => {
-    if (evaluated === true) {
-      setEvaluated(false);
-    } else {
-      setAnswer(answer + val);
+    if (answer.length < 12) {
+      if (evaluated === true) {
+        setEvaluated(false);
+      } else {
+        setAnswer(answer + val);
+      }
     }
   };
 
   const handleOperatorPress = val => {
-    if (evaluated === false) {
-      if (answer !== "") {
-        setAnswer(operatorPress(answer, val));
+    if (answer.length < 12) {
+      if (evaluated === false) {
+        if (answer !== "") {
+          setAnswer(operatorPress(answer, val));
+        }
+      } else {
+        setAnswer(answer + val);
+        setEvaluated(false);
       }
-    } else {
-      setAnswer(answer + val);
-      setEvaluated(false);
     }
   };
 
   const handleDecimalPress = val => {
-    decimalPress ? setAnswer(answer) : setAnswer(answer + val);
+    if (answer.length < 12) {
+      decimalPress ? setAnswer(answer) : setAnswer(answer + val);
+    }
   };
 
   const handleEqual = () => {
     const operatorCheck = answer.split("").splice(-1, 1);
     const regex = /[+-/*]/;
-    if (regex.test(operatorCheck)) {
-      setAnswer(answer);
-    } else {
-      setAnswer(math.evaluate(answer).toFixed(2));
-      setEvaluated(true);
+    if (answer !== "") {
+      if (regex.test(operatorCheck)) {
+        setAnswer(answer);
+      } else {
+        setAnswer(math.evaluate(answer).toFixed(2));
+        setEvaluated(true);
+      }
     }
   };
 

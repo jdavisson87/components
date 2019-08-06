@@ -1,18 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useTransition, animated } from "react-spring";
 import styled from "@emotion/styled";
-import Data from "../../utils/_Data.json";
 
-export default function SocialCard() {
-  const [socialInfo, setSocialInfo] = useState({});
-  const fetchSocialInfo = async () => {
-    setSocialInfo(Data.SocialCard);
-  };
-
-  useEffect(() => {
-    fetchSocialInfo();
-  }, []);
-
+const SocialCard = ({ SocialInfo }) => {
   const {
     name,
     title,
@@ -22,7 +12,7 @@ export default function SocialCard() {
     position,
     github,
     img
-  } = socialInfo;
+  } = SocialInfo;
 
   const [isFlipped, setFlipped] = useState(false);
 
@@ -56,12 +46,17 @@ export default function SocialCard() {
                 <Name>Social Network Links</Name>
               </SocialCardHeader>
               <SocialMediaCtr>
-                <SocialMedia>LinkedIn Website:</SocialMedia>
+                <SocialMedia data-testid={"linkedIn"}>
+                  LinkedIn Website:
+                </SocialMedia>
                 <SocialMediaLink href={linkedIn}>{linkedIn}</SocialMediaLink>
                 <SocialMedia>GitHub Website:</SocialMedia>
                 <SocialMediaLink href={github}>{github}</SocialMediaLink>
               </SocialMediaCtr>
-              <Footer onClick={() => setFlipped(!isFlipped)}>
+              <Footer
+                data-testid={"footer"}
+                onClick={() => setFlipped(!isFlipped)}
+              >
                 Click for Personal information
               </Footer>
             </CardCtr>
@@ -70,7 +65,7 @@ export default function SocialCard() {
           <animated.div key={key} style={props}>
             <CardCtr>
               <SocialCardHeader>
-                <Name>{name}</Name>
+                <Name data-testid={"name"}>{name}</Name>
               </SocialCardHeader>
               <InfoCtr>
                 <AvatarPic src={img} />
@@ -80,7 +75,10 @@ export default function SocialCard() {
                   <Email href={`mailto:${email}`}>{email}</Email>
                 </PersonalInfo>
               </InfoCtr>
-              <Footer onClick={() => setFlipped(!isFlipped)}>
+              <Footer
+                data-testid={"footer"}
+                onClick={() => setFlipped(!isFlipped)}
+              >
                 Click here for Social Network information
               </Footer>
             </CardCtr>
@@ -89,7 +87,9 @@ export default function SocialCard() {
       )}
     </SocialCardCtr>
   );
-}
+};
+
+export default SocialCard;
 
 const SocialCardCtr = styled.div`
   display: flex;
