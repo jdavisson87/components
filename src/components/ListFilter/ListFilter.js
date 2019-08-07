@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 import ListContainer from "./ListContainer";
 
 export default function ListFilter({ PlayerInfo }) {
   const { players } = PlayerInfo;
+  const [showingPlayers, setShowingPlayers] = useState(players);
+  const [nameFilter, setFilter] = useState("");
+
+  const filterFunction = value => {
+    setFilter(value);
+    if (nameFilter.length > 0) {
+      let playerKeys = Object.keys(players);
+      const updateList = playerKeys.filter(player => {
+        if (players[player].name.toLowerCase().includes(nameFilter) === true) {
+          return player;
+        }
+      });
+      let newList = {};
+      updateList.forEach(player => (newList[player] = players[player]));
+      setShowingPlayers(newList);
+    } else {
+      setShowingPlayers(PlayerInfo.players);
+    }
+  };
   return (
     <ListFilterCtr>
       <HeaderCtr>
@@ -11,7 +30,11 @@ export default function ListFilter({ PlayerInfo }) {
         <InputCtr>
           <SelectorCtr>
             <SelectorTitle>Filter By:</SelectorTitle>
-            <FilterInputs placeholder={"Name"} />
+            <FilterInputs
+              type="text"
+              onChange={e => filterFunction(e.target.value)}
+              placeholder={"Name"}
+            />
           </SelectorCtr>
           <SelectorCtr>
             <SelectorTitle>Position</SelectorTitle>
@@ -80,7 +103,7 @@ export default function ListFilter({ PlayerInfo }) {
           </SelectorCtr>
         </InputCtr>
       </HeaderCtr>
-      <ListContainer players={players} />
+      <ListContainer players={showingPlayers} />
     </ListFilterCtr>
   );
 }
