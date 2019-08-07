@@ -5,24 +5,40 @@ import ListContainer from "./ListContainer";
 export default function ListFilter({ PlayerInfo }) {
   const { players } = PlayerInfo;
   const [showingPlayers, setShowingPlayers] = useState(players);
-  const [nameFilter, setFilter] = useState("");
+  const [nameFilter, setNameFilter] = useState("");
+  const [position, setPosition] = useState("all");
 
   const filterFunction = value => {
-    setFilter(value);
-    if (nameFilter.length > 0) {
-      let playerKeys = Object.keys(players);
-      const updateList = playerKeys.filter(player => {
-        if (players[player].name.toLowerCase().includes(nameFilter) === true) {
-          return player;
-        }
-      });
+    if (value) {
       let newList = {};
-      updateList.forEach(player => (newList[player] = players[player]));
+      Object.keys(players)
+        .filter(player => {
+          if (players[player].name.toLowerCase().includes(value) === true) {
+            return player;
+          }
+        })
+        .forEach(player => (newList[player] = players[player]));
       setShowingPlayers(newList);
     } else {
-      setShowingPlayers(PlayerInfo.players);
+      setShowingPlayers(players);
     }
   };
+
+  const positionFilter = value => {
+    if (value === "all") {
+      let newList = {};
+      Object.keys(players)
+        .filter(player => {
+          if (players[player].position === value) {
+            return player;
+          }
+        })
+        .forEach(player => (newList[player] = players[player]));
+      setShowingPlayers(newList);
+    } else {
+    }
+  };
+
   return (
     <ListFilterCtr>
       <HeaderCtr>
@@ -38,22 +54,25 @@ export default function ListFilter({ PlayerInfo }) {
           </SelectorCtr>
           <SelectorCtr>
             <SelectorTitle>Position</SelectorTitle>
-            <FilterSelector>
-              <option>All</option>
-              <option>QB</option>
-              <option>RB</option>
-              <option>FB</option>
-              <option>WR</option>
-              <option>TE</option>
-              <option>OL</option>
-              <option>DE</option>
-              <option>DT</option>
-              <option>LB</option>
-              <option>CB</option>
-              <option>S</option>
-              <option>P</option>
-              <option>K</option>
-              <option>LS</option>
+            <FilterSelector
+              value={position}
+              onChange={e => positionFilter(e.target.value)}
+            >
+              <option value="all">All</option>
+              <option value="QB">QB</option>
+              <option value="RB">RB</option>
+              <option value="FB">FB</option>
+              <option value="WR">WR</option>
+              <option value="TE">TE</option>
+              <option value="OL">OL</option>
+              <option value="DE">DE</option>
+              <option value="DT">DT</option>
+              <option value="LB">LB</option>
+              <option value="CB">CB</option>
+              <option value="S">S</option>
+              <option value="P">P</option>
+              <option value="K">K</option>
+              <option value="LS">LS</option>
             </FilterSelector>
           </SelectorCtr>
           <SelectorCtr>
