@@ -21,7 +21,7 @@ export default function Components(props) {
 const ListCtr = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 16px 50px 0px;
+  padding: 16px 15px 0px;
   & > a {
     text-decoration: none;
     color: black;

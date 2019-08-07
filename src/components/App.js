@@ -28,6 +28,7 @@ function App() {
   const socialInfo = AppData.SocialCard;
   const tabInfo = AppData.CustomizedTabs;
   const recipeInfo = AppData.RecipeCard;
+  const listInfo = AppData.ListFilter;
 
   return Loading ? (
     <p>Loading</p>
@@ -55,7 +56,10 @@ function App() {
             render={props => <RecipeCard {...props} RecipeInfo={recipeInfo} />}
           />
           <Route path="/components/Calculator" component={Calculator} />
-          <Route path="/components/ListFilter" component={ListFilter} />
+          <Route
+            path="/components/ListFilter"
+            render={props => <ListFilter {...props} PlayerInfo={listInfo} />}
+          />
         </Switch>
       </AppCtr>
     </Router>
