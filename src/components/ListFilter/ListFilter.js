@@ -1,43 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import ListContainer from "./ListContainer";
 
-export default function ListFilter({ PlayerInfo }) {
+const ListFilter = ({ PlayerInfo }) => {
   const { players } = PlayerInfo;
   const [showingPlayers, setShowingPlayers] = useState(players);
-  const [nameFilter, setNameFilter] = useState("");
+  const [filteredNames, setFilteredNames] = useState(Object.keys(players));
+  const [filteredPositions, setFilteredPositions] = useState(
+    Object.keys(players)
+  );
   const [position, setPosition] = useState("all");
+  const [nameSearch, setNameSearch] = useState("");
 
-  const filterFunction = value => {
-    if (value) {
-      let newList = {};
+  useEffect(() => {
+    if (nameSearch) {
+      let newList = [];
       Object.keys(players)
         .filter(player => {
-          if (players[player].name.toLowerCase().includes(value) === true) {
+          if (
+            players[player].name.toLowerCase().includes(nameSearch) === true
+          ) {
             return player;
           }
         })
-        .forEach(player => (newList[player] = players[player]));
-      setShowingPlayers(newList);
+        .forEach(player => newList.push(player));
+      setFilteredNames(newList);
     } else {
-      setShowingPlayers(players);
+      setFilteredNames(Object.keys(players));
     }
-  };
 
-  const positionFilter = value => {
-    if (value === "all") {
+    setShowingPlayers(
+      // filteredNames.filter(key => filteredPositions.includes(key) === true)
+      console.log(filteredPositions)
+    );
+  }, [nameSearch]);
+
+  useEffect(() => {
+    if (position !== "all") {
       let newList = {};
       Object.keys(players)
         .filter(player => {
-          if (players[player].position === value) {
+          if (players[player].position === position) {
             return player;
           }
         })
-        .forEach(player => (newList[player] = players[player]));
-      setShowingPlayers(newList);
+        .forEach(player => newList.push(player));
+      setFilteredPositions(newList);
     } else {
+      setFilteredPositions(players);
     }
-  };
+    setShowingPlayers();
+    // filteredNames.filter(key => filteredPositions.includes(key) === true)
+  }, [position]);
 
   return (
     <ListFilterCtr>
@@ -48,15 +62,15 @@ export default function ListFilter({ PlayerInfo }) {
             <SelectorTitle>Filter By:</SelectorTitle>
             <FilterInputs
               type="text"
-              onChange={e => filterFunction(e.target.value)}
+              onChange={e => setNameSearch(e.target.value)}
               placeholder={"Name"}
             />
           </SelectorCtr>
           <SelectorCtr>
             <SelectorTitle>Position</SelectorTitle>
             <FilterSelector
+              onChange={e => setPosition(e.target.value)}
               value={position}
-              onChange={e => positionFilter(e.target.value)}
             >
               <option value="all">All</option>
               <option value="QB">QB</option>
@@ -125,7 +139,9 @@ export default function ListFilter({ PlayerInfo }) {
       <ListContainer players={showingPlayers} />
     </ListFilterCtr>
   );
-}
+};
+
+export default ListFilter;
 
 const ListFilterCtr = styled.div`
   display: flex;
