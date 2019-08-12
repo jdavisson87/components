@@ -7,7 +7,10 @@ const ListFilter = ({ PlayerInfo }) => {
   const [showingPlayers, setShowingPlayers] = useState(players);
   const [position, setPosition] = useState("all");
   const [nameSearch, setNameSearch] = useState(Object.keys(players));
+  const [search, setSearch] = useState("");
   const [positionSearch, setPositionSearch] = useState(Object.keys(players));
+  const [minAge, setMinAge] = useState("0");
+  const [maxAge, setMaxAge] = useState("40");
 
   const nameFilter = value => {
     if (value) {
@@ -21,6 +24,7 @@ const ListFilter = ({ PlayerInfo }) => {
     } else {
       setNameSearch(Object.keys(players));
     }
+    setSearch(value);
   };
 
   const positionFilter = value => {
@@ -38,15 +42,30 @@ const ListFilter = ({ PlayerInfo }) => {
     setPosition(value);
   };
 
+  const clear = () => {
+    setPosition("all");
+    setSearch("");
+    setMinAge("0");
+    setMaxAge("40");
+    setNameSearch(Object.keys(players));
+    setPositionSearch(Object.keys(players));
+    setShowingPlayers(players);
+  };
+
   useEffect(() => {
     let newList = {};
     Object.keys(players).forEach(player => {
       if (positionSearch.includes(player) && nameSearch.includes(player)) {
-        newList[player] = players[player];
+        if (
+          players[player].age >= parseInt(minAge) &&
+          players[player].age <= parseInt(maxAge)
+        ) {
+          newList[player] = players[player];
+        }
       }
     });
     setShowingPlayers(newList);
-  }, [nameSearch, positionSearch, players]);
+  }, [nameSearch, positionSearch, players, minAge, maxAge]);
 
   return (
     <ListFilterCtr>
@@ -59,6 +78,7 @@ const ListFilter = ({ PlayerInfo }) => {
               type="text"
               onChange={e => nameFilter(e.target.value)}
               placeholder={"Name"}
+              value={search}
             />
           </SelectorCtr>
           <SelectorCtr>
@@ -87,48 +107,55 @@ const ListFilter = ({ PlayerInfo }) => {
           <SelectorCtr>
             <SelectorTitle>Min/Max Age</SelectorTitle>
             <MinMaxCtr>
-              <FilterSelector>
-                <option>Min</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
-                <option>24</option>
-                <option>25</option>
-                <option>26</option>
-                <option>27</option>
-                <option>28</option>
-                <option>29</option>
-                <option>30</option>
-                <option>31</option>
-                <option>32</option>
-                <option>33</option>
-                <option>34</option>
-                <option>35</option>
-                <option>36</option>
-                <option>37</option>
+              <FilterSelector
+                onChange={e => setMinAge(e.target.value)}
+                value={minAge}
+              >
+                <option value="0">Min</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
               </FilterSelector>
-              <FilterSelector>
-                <option>Max</option>
-                <option>37</option>
-                <option>36</option>
-                <option>35</option>
-                <option>44</option>
-                <option>33</option>
-                <option>32</option>
-                <option>31</option>
-                <option>30</option>
-                <option>29</option>
-                <option>28</option>
-                <option>27</option>
-                <option>26</option>
-                <option>25</option>
-                <option>24</option>
-                <option>23</option>
-                <option>22</option>
-                <option>21</option>
+              <FilterSelector
+                onChange={e => setMaxAge(e.target.value)}
+                value={maxAge}
+              >
+                <option value="40">Max</option>
+                <option value="37">37</option>
+                <option value="36">36</option>
+                <option value="35">35</option>
+                <option value="34">44</option>
+                <option value="33">33</option>
+                <option value="32">32</option>
+                <option value="31">31</option>
+                <option value="30">30</option>
+                <option value="29">29</option>
+                <option value="28">28</option>
+                <option value="27">27</option>
+                <option value="26">26</option>
+                <option value="25">25</option>
+                <option value="24">24</option>
+                <option value="23">23</option>
+                <option value="22">22</option>
+                <option value="21">21</option>
               </FilterSelector>
             </MinMaxCtr>
           </SelectorCtr>
+          <ClearBtn onClick={() => clear()}>Clear</ClearBtn>
         </InputCtr>
       </HeaderCtr>
       <ListContainer players={showingPlayers} />
@@ -193,6 +220,22 @@ const MinMaxCtr = styled.div`
   width: 100%;
   & > select {
     width: 90px;
+  }
+`;
+
+const ClearBtn = styled.button`
+  width: 100px;
+  height: 34px;
+  margin-top: 20px;
+  font-size: 18px;
+  color: rgb(0, 34, 68);
+  font-weight: bolder;
+  background: rgb(134, 147, 151);
+  border: none;
+  border-radius: 5px;
+  :hover {
+    cursor: pointer;
+    background: lightgrey;
   }
 `;
 
