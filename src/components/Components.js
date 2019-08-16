@@ -20,6 +20,7 @@ export default function Components(props) {
 
 const ListCtr = styled.div`
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 16px 15px 0px;
   & > a {

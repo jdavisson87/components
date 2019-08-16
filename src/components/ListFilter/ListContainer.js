@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 import ListItem from "./ListItem";
 
-export default function ListContainer({ players }) {
+const ListContainer = ({ players }) => {
   return (
     <ListCtr>
       <ColumnCtr>
@@ -24,7 +25,13 @@ export default function ListContainer({ players }) {
       ))}
     </ListCtr>
   );
-}
+};
+
+ListContainer.propTypes = {
+  players: PropTypes.object.isRequired
+};
+
+export default ListContainer;
 
 const ListCtr = styled.ul`
   width: 870px;

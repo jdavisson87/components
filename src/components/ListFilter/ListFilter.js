@@ -138,7 +138,7 @@ const ListFilter = ({ PlayerInfo }) => {
                 <option value="37">37</option>
                 <option value="36">36</option>
                 <option value="35">35</option>
-                <option value="34">44</option>
+                <option value="34">34</option>
                 <option value="33">33</option>
                 <option value="32">32</option>
                 <option value="31">31</option>
@@ -237,6 +237,12 @@ const ClearBtn = styled.button`
     cursor: pointer;
     background: lightgrey;
   }
+  :focus {
+    outline: none;
+  }
+  :active {
+    outline: none;
+  }
 `;
 
 const SelectorTitle = styled.p`
@@ -252,6 +258,12 @@ const FilterSelector = styled.select`
   background: rgb(134, 147, 151);
   color: rgb(0, 34, 68);
   font-weight: bolder;
+  :focus {
+    outline: none;
+  }
+  :active {
+    outline: none;
+  }
 `;
 
 const HeaderCtr = styled.div`
