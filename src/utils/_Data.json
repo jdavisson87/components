@@ -601,5 +601,12 @@
         "age": 26
       }
     }
+  },
+  "RestaurantForm": {
+    "link": {
+      "name": "RestaurantForm",
+      "title": "Restaurant Form",
+      "img": "RestaurantForm.jpg"
+    }
   }
 }

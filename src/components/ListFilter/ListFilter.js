@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 import ListContainer from "./ListContainer";
 
 const ListFilter = ({ PlayerInfo }) => {
@@ -163,6 +164,10 @@ const ListFilter = ({ PlayerInfo }) => {
   );
 };
 
+ListFilter.propTypes = {
+  PlayerInfo: PropTypes.object.isRequired
+};
+
 export default ListFilter;
 
 const ListFilterCtr = styled.div`
@@ -174,7 +179,7 @@ const ListFilterCtr = styled.div`
   height: 150px;
 `;
 
-const ComponentTitle = styled.h2`
+const ComponentTitle = styled.h1`
   margin: 0;
 `;
 

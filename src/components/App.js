@@ -9,6 +9,7 @@ import CustomizedTabs from "./CustomizedTabs/CustomizedTabs";
 import RecipeCard from "./RecipeCard/RecipeCard";
 import Calculator from "./Calculator/Calculator";
 import ListFilter from "./ListFilter/ListFilter";
+import RestaurantForm from "./RestaurantForm/RestaurantForm";
 import Data from "../utils/_Data.json";
 
 function App() {
@@ -59,6 +60,10 @@ function App() {
           <Route
             path="/components/ListFilter"
             render={props => <ListFilter {...props} PlayerInfo={listInfo} />}
+          />
+          <Route
+            path="/components/RestaurantForm"
+            render={props => <RestaurantForm {...props} />}
           />
         </Switch>
       </AppCtr>
