@@ -4,70 +4,147 @@ import styled from "@emotion/styled";
 
 const RestaurantForm = () => {
   const signup = () => {
-    alert(`User Created! 
+    alert(`Your Reservation has been made! 
 Name: ${inputs.firstName} ${inputs.lastName}
-Email: ${inputs.email}`);
+Email: ${inputs.email}
+Phone: ${inputs.phone}
+Reservation: ${inputs.time}
+
+If you have any further questions, please call us at (888) 888-8888`);
   };
-  const { inputs, handleInputChange, handleSubmit } = useSignUpForm(
-    { firstName: "", lastName: "", email: "", password1: "", password2: "" },
+  const {
+    inputs,
+    handleInputChange,
+    handleSelectChange,
+    handleSubmit
+  } = useSignUpForm(
+    { firstName: "", lastName: "", email: "", phone: "", time: "7:00 PM" },
     signup
   );
   return (
-    <div>
-      <Title data-testid="form-title">User Form</Title>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>First Name</label>
-          <input
+    <RestaurantFormCtr>
+      <h1 data-testid="form-title">Restaurant Form</h1>
+      <ReservationForm onSubmit={handleSubmit} data-testid="restaurant-form">
+        <IndividualField>
+          <Fields>First Name</Fields>
+          <IndividualInput
             type="text"
             name="firstName"
             onChange={handleInputChange}
             value={inputs.firstName}
             required
           />
-          <label>Last Name</label>
-          <input
+        </IndividualField>
+        <IndividualField>
+          <Fields>Last Name</Fields>
+          <IndividualInput
             type="text"
             name="lastName"
             onChange={handleInputChange}
             value={inputs.lastName}
             required
           />
-        </div>
-        <div>
-          <label>Email Address</label>
-          <input
+        </IndividualField>
+        <IndividualField>
+          <Fields>Email Address</Fields>
+          <IndividualInput
             type="email"
             name="email"
             onChange={handleInputChange}
             value={inputs.email}
             required
           />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            name="password1"
+        </IndividualField>
+        <IndividualField>
+          <Fields>Phone Number ###-###-####</Fields>
+          <IndividualInput
+            type="tel"
+            name="phone"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             onChange={handleInputChange}
-            value={inputs.password1}
+            value={inputs.phone}
+            required
           />
-        </div>
-        <div>
-          <label>Re-enter Password</label>
-          <input
-            type="password"
-            name="password2"
-            onChange={handleInputChange}
-            value={inputs.password2}
-          />
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+        </IndividualField>
+        <IndividualField>
+          <Fields>Time</Fields>
+          <TimeSelect
+            onChange={handleSelectChange}
+            value={inputs.time}
+            required
+          >
+            <option value="7:00 PM">7:00PM</option>
+            <option value="7:15 PM">7:15PM</option>
+            <option value="7:30 PM">7:30PM</option>
+            <option value="7:45 PM">7:45PM</option>
+            <option value="8:00 PM">8:00PM</option>
+            <option value="8:15 PM">8:15PM</option>
+            <option value="8:30 PM">8:30PM</option>
+            <option value="8:45 PM">8:45PM</option>
+            <option value="9:00 PM">9:00PM</option>
+            <option value="9:15 PM">9:15PM</option>
+            <option value="9:30 PM">9:30PM</option>
+            <option value="9:45 PM">9:45PM</option>
+            <option value="10:00 PM">10:00PM</option>
+          </TimeSelect>
+        </IndividualField>
+        <SubmitBtn type="submit" data-testid="submitBtn">
+          Submit
+        </SubmitBtn>
+      </ReservationForm>
+    </RestaurantFormCtr>
   );
 };
 
 export default RestaurantForm;
 
-const Title = styled.h1``;
+const RestaurantFormCtr = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+`;
+
+const ReservationForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 15px;
+`;
+
+const IndividualField = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const IndividualInput = styled.input`
+  width: 200px;
+  font-size: 18px;
+`;
+
+const TimeSelect = styled.select`
+  width: 200px;
+  font-size: 18px;
+`;
+
+const Fields = styled.h3`
+  margin: 5px;
+`;
+
+const SubmitBtn = styled.button`
+  border: none;
+  background: none;
+  font-size: 20px;
+  align-self: center;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  -o-transition: 1s;
+  -ms-transition: 1s;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
+  :hover {
+    cursor: pointer;
+    background: black;
+    color: white;
+  }
+`;

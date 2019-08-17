@@ -5,6 +5,7 @@ const useSignUpForm = (initialValues, callback) => {
 
   const handleSubmit = event => {
     if (event) event.preventDefault();
+    setInputs(initialValues);
     callback();
   };
   const handleInputChange = event => {
@@ -14,9 +15,17 @@ const useSignUpForm = (initialValues, callback) => {
       [event.target.name]: event.target.value
     }));
   };
+  const handleSelectChange = event => {
+    event.persist();
+    setInputs(inputs => ({
+      ...inputs,
+      time: event.target.value
+    }));
+  };
   return {
     handleSubmit,
     handleInputChange,
+    handleSelectChange,
     inputs
   };
 };
