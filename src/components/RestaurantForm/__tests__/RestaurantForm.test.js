@@ -10,7 +10,7 @@ afterEach(() => {
 console.error = jest.fn();
 
 test("<RestaurantForm/>", () => {
-  const { getByTestId, getByText } = render(<RestaurantForm />);
+  const { getByTestId } = render(<RestaurantForm />);
   expect(getByTestId("form-title").textContent).toBe("Restaurant Form");
   expect(getByTestId("restaurant-form")).toBeTruthy();
   expect(getByTestId("submitBtn")).toBeTruthy();

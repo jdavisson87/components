@@ -6,34 +6,45 @@ export default function Nav() {
   return (
     <NavBar>
       <LinkCtr>
-        <NavLink to="/">
-          <LinkText>Home</LinkText>
-        </NavLink>
+        <Links>
+          <NavLink to="/">
+            <LinkText>Home</LinkText>
+          </NavLink>
+        </Links>
+        <Links>
+          <NavLink to="/components">
+            <LinkText>Components</LinkText>
+          </NavLink>
+        </Links>
       </LinkCtr>
-      <LinkCtr>
-        <NavLink to="/components">
-          <LinkText>Components</LinkText>
-        </NavLink>
-      </LinkCtr>
+      <LogoCtr>
+        <Logo src={require("../images/Logo.png")} />
+      </LogoCtr>
     </NavBar>
   );
 }
 
 const NavBar = styled.div`
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   width: 100%;
   padding: 15px;
-  margin-left: 50px;
 `;
 
 const LinkCtr = styled.div`
+  display: flex;
+  width: 270px;
+`;
+
+const Links = styled.div`
   -o-transition: 1s;
   -ms-transition: 1s;
   -moz-transition: 1s;
   -webkit-transition: 1s;
   border-radius: 5px;
   margin: 7px;
+  width: auto;
+  height: 46px;
   & > a {
     text-decoration: none;
     color: black;
@@ -57,4 +68,14 @@ const LinkText = styled.p`
   -webkit-transition: 0.7s;
   margin: 0;
   padding: 8px;
+`;
+
+const LogoCtr = styled.div``;
+
+const Logo = styled.img`
+  max-width: 80px;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  margin-right: 20px;
 `;

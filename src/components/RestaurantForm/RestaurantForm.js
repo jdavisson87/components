@@ -56,13 +56,14 @@ If you have any further questions, please call us at (888) 888-8888`);
           />
         </IndividualField>
         <IndividualField>
-          <Fields>Phone Number ###-###-####</Fields>
+          <Fields>Phone Number</Fields>
           <IndividualInput
             type="tel"
             name="phone"
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             onChange={handleInputChange}
             value={inputs.phone}
+            placeholder="###-###-####"
             required
           />
         </IndividualField>
@@ -138,10 +139,10 @@ const SubmitBtn = styled.button`
   margin-top: 10px;
   padding: 5px;
   border-radius: 5px;
-  -o-transition: 1s;
-  -ms-transition: 1s;
-  -moz-transition: 1s;
-  -webkit-transition: 1s;
+  -o-transition: 0.7s;
+  -ms-transition: 0.7s;
+  -moz-transition: 0.7s;
+  -webkit-transition: 0.7s;
   :hover {
     cursor: pointer;
     background: black;
