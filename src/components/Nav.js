@@ -49,11 +49,11 @@ const Links = styled.div`
     text-decoration: none;
     color: black;
     :hover {
-      color: white;
+      color: #9ed2ff;
     }
   }
   :hover {
-    background: black;
+    background: #00274a;
     cursor: pointer;
   }
 `;
@@ -73,8 +73,8 @@ const LinkText = styled.p`
 const LogoCtr = styled.div``;
 
 const Logo = styled.img`
-  max-width: 80px;
-  max-height: 80px;
+  max-width: 120px;
+  max-height: 120px;
   width: auto;
   height: auto;
   margin-right: 20px;

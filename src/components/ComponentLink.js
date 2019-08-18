@@ -31,10 +31,11 @@ const Card = styled.div`
   -webkit-transition: 0.7s;
   box-shadow: 2px 4px #ccc;
   :hover {
-    background: rgb(214, 230, 255);
+    background: #00274a;
     -webkit-box-shadow: 3px 3px 5px 6px #ccc;
     -moz-box-shadow: 3px 3px 5px 6px #ccc;
     box-shadow: 3px 3px 5px 6px #ccc;
+    color: #9ed2ff;
   }
 `;
 
