@@ -3,8 +3,9 @@ import styled from "@emotion/styled";
 import PropTypes from "prop-types";
 
 const CustomizedTabs = ({ TabInfo }) => {
-  const { tabs } = TabInfo;
   const [activeTab, isActiveTab] = useState(null);
+  if (!TabInfo) return <p data-testId="loading">Loading....</p>;
+  const { tabs } = TabInfo;
   return (
     <CustomizedTabCtr>
       <h1>Customized Tabs</h1>
@@ -13,7 +14,11 @@ const CustomizedTabs = ({ TabInfo }) => {
           {Object.keys(tabs).map(tab => {
             const { name, title } = tabs[tab];
             return (
-              <Tab key={name} onClick={() => isActiveTab(title)}>
+              <Tab
+                data-testId={`${title}`}
+                key={name}
+                onClick={() => isActiveTab(title)}
+              >
                 <TabTitle>{name}</TabTitle>
                 <BottomBorder />
               </Tab>
@@ -22,9 +27,9 @@ const CustomizedTabs = ({ TabInfo }) => {
         </Tabs>
         <ContentCtr>
           {activeTab === null ? (
-            <p>No tab selected</p>
+            <p data-testId="no-content">No tab selected</p>
           ) : (
-            <p>{tabs[activeTab].content}</p>
+            <p data-testId="active-content">{tabs[activeTab].content}</p>
           )}
         </ContentCtr>
       </TabCtr>
@@ -80,9 +85,8 @@ const Tabs = styled.div`
 
 const BottomBorder = styled.div`
   height: 2px;
-  background: lightgrey;
+  background: black;
   transition: all 0.5s linear;
-
   }
 `;
 
@@ -102,14 +106,14 @@ const Tab = styled.button`
   transition: all 0.7s linear;
   padding: 15px 0px;
   :hover {
-    color: blue;
+    color: #2d79c6;
     cursor: pointer;
   }
   :focus {
     outline: none;
-    color: blue;
+    color: #2d79c6;
     & > div {
-      background: blue;
+      background: #9ed2ff;
     }
   }
 `;
