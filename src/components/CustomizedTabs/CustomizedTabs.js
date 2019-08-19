@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 
-export default function CustomizedTabs(props) {
-  const { tabs } = props.TabInfo;
+const CustomizedTabs = ({ TabInfo }) => {
+  const { tabs } = TabInfo;
   const [activeTab, isActiveTab] = useState(null);
   return (
     <CustomizedTabCtr>
@@ -29,7 +30,36 @@ export default function CustomizedTabs(props) {
       </TabCtr>
     </CustomizedTabCtr>
   );
-}
+};
+
+CustomizedTabs.propTypes = {
+  TabInfo: PropTypes.shape({
+    link: PropTypes.shape({
+      img: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired
+    }).isRequired,
+    tabs: PropTypes.shape({
+      tab1: PropTypes.shape({
+        content: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
+      }).isRequired,
+      tab2: PropTypes.shape({
+        content: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
+      }).isRequired,
+      tab3: PropTypes.shape({
+        content: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired
+  }).isRequired
+};
+
+export default CustomizedTabs;
 
 const CustomizedTabCtr = styled.div`
   display: flex;

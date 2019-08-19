@@ -54,7 +54,7 @@ const SocialCard = ({ SocialInfo }) => {
                 <SocialMediaLink href={github}>{github}</SocialMediaLink>
               </SocialMediaCtr>
               <Footer
-                data-testid={"footer"}
+                data-testid={"social-footer"}
                 onClick={() => setFlipped(!isFlipped)}
               >
                 Click for Personal information
@@ -76,7 +76,7 @@ const SocialCard = ({ SocialInfo }) => {
                 </PersonalInfo>
               </InfoCtr>
               <Footer
-                data-testid={"footer"}
+                data-testid={"personal-footer"}
                 onClick={() => setFlipped(!isFlipped)}
               >
                 Click here for Social Network information

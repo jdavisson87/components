@@ -1,5 +1,5 @@
 import React from "react";
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 import SocialCard from "./SocialCard";
 
 afterEach(cleanup);
@@ -22,5 +22,6 @@ test("<SocialCard />", () => {
   expect(getByTestId("name").textContent).toBe("John Smith");
   expect(queryByTestId("linkedIn")).toBeFalsy();
 
-  //need to click the footer to flip the card, and test to make sure the social network information is showing
+  fireEvent.click(getByTestId("personal-footer"));
+  expect(getByTestId("linkedIn")).toBeTruthy();
 });
