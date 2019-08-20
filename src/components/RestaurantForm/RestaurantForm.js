@@ -135,6 +135,7 @@ const SubmitBtn = styled.button`
   border: none;
   background: none;
   font-size: 20px;
+  font-weight: bolder;
   align-self: center;
   margin-top: 10px;
   padding: 5px;
@@ -145,7 +146,15 @@ const SubmitBtn = styled.button`
   -webkit-transition: 0.7s;
   :hover {
     cursor: pointer;
-    background: black;
-    color: white;
+    background: #00274a;
+    color: #9ed2ff;
+  }
+  :active {
+    outline: none;
+    background: #00274a;
+    color: #9ed2ff;
+  }
+  :focus {
+    outline: none;
   }
 `;

@@ -3,6 +3,33 @@ import styled from "@emotion/styled";
 import { FaAngleUp } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
+const SectionList = ({ section, listType, list }) => {
+  const [isToggled, setToggle] = useState(true);
+  return (
+    <SectionCtr>
+      <HeaderCtr>
+        <Head>{section}</Head>
+        <ExpandBtnCtr toggle={isToggled}>
+          <ExpandBtn onClick={() => setToggle(!isToggled)}>
+            <IconContext.Provider value={{ size: "20px", color: "grey" }}>
+              <FaAngleUp />
+            </IconContext.Provider>
+          </ExpandBtn>
+        </ExpandBtnCtr>
+      </HeaderCtr>
+      {isToggled && (
+        <ListSection listType={listType}>
+          {list.map((item, index) => (
+            <li key={`${section}${index}`}>{item}</li>
+          ))}
+        </ListSection>
+      )}
+    </SectionCtr>
+  );
+};
+
+export default SectionList;
+
 const SectionCtr = styled.div`
   font-family: sans-serif;
   font-weight: 300;
@@ -61,30 +88,3 @@ const ListSection = styled.ol`
     padding: 8px 8px 0px 0px;
   }
 `;
-
-const SectionList = ({ section, listType, list }) => {
-  const [isToggled, setToggle] = useState(true);
-  return (
-    <SectionCtr>
-      <HeaderCtr>
-        <Head>{section}</Head>
-        <ExpandBtnCtr toggle={isToggled}>
-          <ExpandBtn onClick={() => setToggle(!isToggled)}>
-            <IconContext.Provider value={{ size: "20px", color: "grey" }}>
-              <FaAngleUp />
-            </IconContext.Provider>
-          </ExpandBtn>
-        </ExpandBtnCtr>
-      </HeaderCtr>
-      {isToggled && (
-        <ListSection listType={listType}>
-          {list.map((item, index) => (
-            <li key={`${section}${index}`}>{item}</li>
-          ))}
-        </ListSection>
-      )}
-    </SectionCtr>
-  );
-};
-
-export default SectionList;

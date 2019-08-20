@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const CustomizedTabs = ({ TabInfo }) => {
   const [activeTab, isActiveTab] = useState(null);
-  if (!TabInfo) return <p data-testId="loading">Loading....</p>;
+  if (!TabInfo) return <p data-testid="loading">Loading....</p>;
   const { tabs } = TabInfo;
   return (
     <CustomizedTabCtr>
@@ -15,7 +15,7 @@ const CustomizedTabs = ({ TabInfo }) => {
             const { name, title } = tabs[tab];
             return (
               <Tab
-                data-testId={`${title}`}
+                data-testid={`${title}`}
                 key={name}
                 onClick={() => isActiveTab(title)}
               >
@@ -27,9 +27,9 @@ const CustomizedTabs = ({ TabInfo }) => {
         </Tabs>
         <ContentCtr>
           {activeTab === null ? (
-            <p data-testId="no-content">No tab selected</p>
+            <p data-testid="no-content">No tab selected</p>
           ) : (
-            <p data-testId="active-content">{tabs[activeTab].content}</p>
+            <p data-testid="active-content">{tabs[activeTab].content}</p>
           )}
         </ContentCtr>
       </TabCtr>

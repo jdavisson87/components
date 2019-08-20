@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
+import PropTypes from "prop-types";
 import SectionList from "./SectionList";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
-export default function RecipeCard(props) {
+const RecipeCard = ({ RecipeInfo }) => {
+  const [isLiked, setLiked] = useState(false);
   const {
     name,
     image,
@@ -16,9 +18,11 @@ export default function RecipeCard(props) {
     favorite,
     ingredients,
     steps
-  } = props.RecipeInfo;
+  } = RecipeInfo;
 
-  const [isLiked, setLiked] = useState(favorite);
+  useEffect(() => {
+    setLiked(favorite);
+  }, [favorite]);
 
   return (
     <RecipeCtr>
@@ -70,7 +74,13 @@ export default function RecipeCard(props) {
       </BtnCtr>
     </RecipeCtr>
   );
-}
+};
+
+export default RecipeCard;
+
+RecipeCard.propTypes = {
+  RecipeInfo: PropTypes.object.isRequired
+};
 
 const RecipeCtr = styled.div`
   display: flex;
